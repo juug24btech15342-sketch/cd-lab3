@@ -34,6 +34,17 @@ The JUnit suite covers increasing stock, decreasing stock, inventory valuation, 
 
 The workflow at `.github/workflows/ci.yml` runs for every push (and can also be started manually). It checks out the source, configures Temurin Java 17 with Maven dependency caching, then runs `./mvnw --batch-mode --no-transfer-progress clean verify` on `ubuntu-latest`. A test or build failure makes the job fail; all passing steps produce a successful workflow run.
 
+## Publish and verify on GitHub
+
+Create an empty repository on GitHub, then connect and push this local `main` branch (replace the URL with your repository URL):
+
+```bash
+git remote add origin https://github.com/<your-username>/<your-repository>.git
+git push -u origin main
+```
+
+Open the repository's **Actions** tab, select **Java CI**, and open the run started by the push. Verify that the **Build and run tests** step reports five tests and succeeds. Use the repository's actual URL in the report.
+
 ## CI pipeline diagram
 
 ```mermaid
